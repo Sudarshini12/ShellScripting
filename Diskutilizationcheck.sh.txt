@@ -1,0 +1,14 @@
+#!/bin/bash
+echo "Check disk usage in Linux system"
+
+# Correcting the assignment with no spaces around '='
+disk_size=$(df -h | grep '/dev/root' | awk '{print $5}' | cut -d '%' -f1)
+
+echo "$disk_size% of disk is filled"
+
+# Correcting the condition to match the message
+if [ "$disk_size" -gt 20 ]; then
+  echo "Disk is utilized more than 20%, expand disk or delete files soon"
+else
+  echo "Enough disk is available"
+fi
