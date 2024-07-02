@@ -13,7 +13,7 @@ payload="This is important.... I found the hidden treasure!!!"
 echo doing stuff
 
 #Find something worth notifying za team of
-ech "I found something... I'll notify the team now."
+echo "I found something... I'll notify the team now."
 
 
 #Notify the slack!!
