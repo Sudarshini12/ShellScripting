@@ -1,0 +1,40 @@
+slack -->integrations-->Apps-->webhook (from the appdirectory install)-->Add to slack-->add incoming webhooks integration-->webhook url
+
+
+
+#!/bin/bash
+
+#curl command to slack and teams tutorial
+
+WEBHOOK_URL="https://hooks.slack.com/services/TIINBGHMT/xhdsuhs"
+payload="This is important.... I found the hidden treasure!!!"
+
+#Loop through files and run things/look for stuff
+echo doing stuff
+
+#Find something worth notifying za team of
+ech "I found something... I'll notify the team now."
+
+
+#Notify the slack!!
+curl -X POST --data-urlencode "payload-(\"channel\": \"ntreasurehunt\":, \"username\": \"Happy Tressure Hunters\",
+\"text\": \"$payload\", \"icon_imoji\": \":gem:\"}" "$WEBHOOK_URL"
+
+echo
+
+
+## uh oh are those pirates??
+echo "uh oh..."
+payload="I just lost it.."
+sleep 5 
+curl -X POST --data-urlencode "payload-(\"channel\": \"ntreasurehunt\":, \"username\": \"sad Tressure Hunters\",
+\"text\": \"$payload\", \"icon_imoji\": \":gem:\"}" "$WEBHOOK_URL"
+
+
+#Notify Teams
+
+html_payload=$(echo $payload | sed -i -r 's/.*/&<br>/')
+
+curl --write-out %(http_code) -H "content-Type: application/json" -d "{'title': 'I found something important',
+'text': '$html_payload'}" "$webhook_url"
+
